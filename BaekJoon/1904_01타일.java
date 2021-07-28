@@ -25,7 +25,7 @@ public class Main {
 
 	}
 
-	public static int getCntZero(int n) {
+	public static int getCntZero(int n) {	//0으로 시작 : cntZero[n-1]뒤에 1붙인거 + cntZero[n-2]앞에 00붙인거
 		if (n < 1)
 			return 0;
 
@@ -35,7 +35,7 @@ public class Main {
 		
 		return cntZero[n];
 	}
-	public static int getCntOne(int n) {
+	public static int getCntOne(int n) {	//1로 시작 : cnt[n-1] 앞에 1
 		if (n < 1)
 			return 0;
 
