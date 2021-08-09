@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-public class Solution_SWEA_1228_암호문1_D3_정지영 {
+public class Solution_SWEA_1228_암호문1_D3 {
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
