@@ -25,10 +25,7 @@ public class Solution_SWEA_3234_준환이의양팔저울 {
 
 //	하나씩 올려보기 --> 시간초과...
 
-//	넥퍼로 구한다음에.. 하나씩올려보기?..
-
-//	부분집합을 구해서 그 합이 절반보다 크거나 같은경우 저울에올림
-
+// 	순열을 구한 후 해당 순열에서 저울에 올릴수 있는경우를 구함
 	public static int[] weight;
 	public static int[] perm;
 	public static boolean[] isVisited;
