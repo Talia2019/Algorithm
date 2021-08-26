@@ -39,6 +39,6 @@ public class Main_B1_11050_이항계수1 {
 			return 1;
 		// nCn = nC0 = 1
 
-		return BC(n - 1, k - 1) + BC(n - 1, k);
+		return dp[n][k] = BC(n - 1, k - 1) + BC(n - 1, k);
 	}
 }
