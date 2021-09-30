@@ -1,56 +1,51 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.StringTokenizer;
 
-public class Main {
+public class Main_S1_1992_쿼드트리 {
 
-// 	S1 1992 쿼드트리
+	// S1 1992 쿼드트리
+	// 다른게 있으면 괄호를 붙이고 함수호출 -> 이걸 리턴
 
-//	4개의 재귀에서 나온값이 모두 같으면 하나만
-//	다르면 괄호쓰고 모두 적음
-
-	public static int[][] video;
+	public static char[][] video;
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 		int n = Integer.parseInt(br.readLine());
-		video = new int[n][n];
-
+		video = new char[n][n];
+		
 		for (int i = 0; i < n; i++) {
-			String str = br.readLine();
+			String input = br.readLine();
 			for (int j = 0; j < n; j++) {
-				video[i][j] = str.charAt(j) - '0';
+				video[i][j] = input.charAt(j);
 			}
 		}
-
+		
 		System.out.println(quadTree(0, 0, n));
+
 	}
 
-	public static String quadTree(int x, int y, int n) { // x,y부터 몇개 볼건지
-		if (n == 1) {
-			return Integer.toString(video[x][y]);
+	public static String quadTree(int r, int c, int len) {
+		StringBuilder res = new StringBuilder();
+
+		char flag = video[r][c];
+		for (int i = r; i < r + len; i++) {
+			for (int j = c; j < c + len; j++) {
+				if (video[i][j] != flag) {
+					int half = len / 2;
+					res.append("(");
+					res.append(quadTree(r, c, half));
+					res.append(quadTree(r, c + half, half));
+					res.append(quadTree(r + half, c, half));
+					res.append(quadTree(r + half, c + half, half));
+					res.append(")");
+					return res.toString();
+				}
+			}
 		}
-
-		String result;
-		String[] returns = new String[4];
-		int num = n / 2;
-
-		returns[0] = quadTree(x, y, num);
-		returns[1] = quadTree(x, y + num, num);
-		returns[2] = quadTree(x + num, y, num);
-		returns[3] = quadTree(x + num, y + num, num);
-
-		if ((returns[0].equals("0") && returns[0].equals(returns[1]) && returns[2].equals(returns[3]) && returns[1].equals(returns[2]))
-				||(returns[0].equals("1") && returns[0].equals(returns[1]) && returns[2].equals(returns[3]) && returns[1].equals(returns[2])))	
-			result = returns[0];
-		else
-			result = "(" + returns[0] + returns[1] + returns[2] + returns[3] + ")";
-
-		return result;
-
+		res.append(flag);
+		return res.toString();
 	}
 
 }
