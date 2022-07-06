@@ -25,7 +25,7 @@ public class G5_1756 {
         oven[0] = Integer.parseInt(st.nextToken());
         for (int i = 1; i < d; i++) {
             int o = Integer.parseInt(st.nextToken());
-            oven[i - 1] = Math.min(o, oven[i - 1]);
+            oven[i] = Math.min(o, oven[i - 1]);
         }
         bottom = d;
         st = new StringTokenizer(br.readLine(), " ");
